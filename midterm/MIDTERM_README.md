@@ -41,12 +41,12 @@ Stores all figures generated from `MidtermPaper.ipynb`.
 Contains scripts responsible for data scraping and preprocessing from all modalities.
 
 Core scripts may include:
-- `mmai_midterm_report.ipynb`: notebook for scraping Zillow (using HasData API), U.S. Census Bureau data, and Google Static Map and Street View images.
+- `mmai_midterm_report.ipynb`: notebook for scraping Zillow (using HasData API), U.S. Census Bureau data, and Google Static Map and Street View images
 - `clip_script.py.py`: aligns listing images with listing descriptions using CLIP
 - `data_cleaning.py`: cleans data
-- `data_collection.py`: []
-- `data_maintenance.py`: []
-
+- `data_collection.py`: python script for scraping new Zillow listings for tabular data and other modalities (census, GSV, satellite, images, listing descriptions, etc.)
+- `data_maintenance.py`: python script for filling missing data (Census, GSV, Satellite) of existing listings in dataset, downloading listing photos from Zillow URLs, and scraping property listing descriptions and price history
+- 
 --- 
 
 ## Current Progress
