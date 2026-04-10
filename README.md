@@ -6,13 +6,13 @@ Course repository for Multimodal AI. This project uses multimodal learning to an
 - `proposal/` - project proposal
   - `Multimodal_AI_Project_Proposal.pdf` - final proposal submission
   - `PROPOSAL_README.md`
-- `midterm/` - files containing midterm report 
+- `midterm/` - files containing midterm report
   - `data_pipeline/` - Python scripts for data collection, cleaning, and maintenance
     - `data_collection.py` - Scrapes Zillow listings, GSV, and satellite images
     - `data_cleaning.py` - Remaps paths and computes price gaps
     - `data_maintenance.py` - Fills missing census data, images, and listing photos
     - `clip_script.py` - Encodes listing text and photos using CLIP embeddings
-  - `figures/` - Visualizations and result plots
-  - `MidtermPaper.ipynb` - Midterm paper
+  - `figures/` - Data visualizations and result plots
+  - `MidtermPaper.ipynb` - Python code for studies, experiements, and data visualizations for midterm project report
   - `Multimodal_AI_Project_Midterm.html` - Midterm project report
   - `MIDTERM_README.md`
