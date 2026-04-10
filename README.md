@@ -1,10 +1,11 @@
 # MultiModal AI
 Joseph Firmansyah, Stephanie Chen, Sophie Lin
 ## About
-Course repository for Multimodal AI. This project uses multimodal learning to analyze real estate listings by combining Zillow listing data, Google Street View imagery, and satellite images with CLIP embeddings.
+Repository for Multimodal AI class project.
+This research project uses multimodal learning to analyze real estate listings by combining Zillow listing data, Google Street View imagery, satellite images, and census data, to study their interactions and to draw useful inferences in novel ways.
 ## Repository Structure
 - `proposal/` - project proposal
-  - `Multimodal_AI_Project_Proposal.pdf` - final proposal submission
+  - `Multimodal_AI_Project_Proposal.pdf` - initial project proposal
   - `PROPOSAL_README.md`
 - `midterm/` - files containing midterm report
   - `data_pipeline/` - Python scripts for data collection, cleaning, and maintenance
