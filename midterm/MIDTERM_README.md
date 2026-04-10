@@ -46,7 +46,7 @@ Core scripts may include:
 - `data_cleaning.py`: cleans data
 - `data_collection.py`: python script for scraping new Zillow listings for tabular data and other modalities (census, GSV, satellite, images, listing descriptions, etc.)
 - `data_maintenance.py`: python script for filling missing data (Census, GSV, Satellite) of existing listings in dataset, downloading listing photos from Zillow URLs, and scraping property listing descriptions and price history
-- 
+
 --- 
 
 ## Current Progress
