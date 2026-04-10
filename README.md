@@ -6,7 +6,7 @@ Course repository for Multimodal AI. This project uses multimodal learning to an
 - `proposal` - project proposal
   - `Multimodal_AI_Project_Proposal.pdf` - final proposal submission
   - `PROPOSAL_README.md`
--`midterm/` - files containing midterm report 
+- `midterm/` - files containing midterm report 
   - `data_pipeline/` - Python scripts for data collection, cleaning, and maintenance
     - `data_collection.py` - Scrapes Zillow listings, GSV, and satellite images
     - `data_cleaning.py` - Remaps paths and computes price gaps
