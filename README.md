@@ -17,5 +17,5 @@ This research project uses multimodal learning to analyze real estate listings b
   - `MidtermPaper.ipynb` - Python code for studies, experiements, and data visualizations for midterm project report
   - `Multimodal_AI_Project_Midterm.html` - Midterm project report
   - `MIDTERM_README.md`
-- `final/` - files containing midterm report
+- `final/` - files containing final report
   - `data_pipeline/` - Python scripts for data collection, cleaning, and maintenance
