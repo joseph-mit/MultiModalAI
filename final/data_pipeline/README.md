@@ -21,7 +21,7 @@ This folder contains the complete data collection, cleaning, maintenance, and em
 These are produced by the seller's agent and are designed to present the property favorably.
 
 **1. Listing Text**
-- What: The property description written by the listing agent
+- What: The written property description authored by the listing agent
 - Source: Zillow property detail API (via Hasdata)
 - Format: Free text string, stored in `listing_description` column of the master CSV
 - Coverage: ~99.8% of properties
@@ -34,7 +34,7 @@ These are produced by the seller's agent and are designed to present the propert
 
 ---
 
-### Objective Modalities (independent sources)
+### Objective Modalities (CLIP-encoded, independent sources)
 These exist independently of the transaction and are not curated by the seller.
 
 **3. Google Street View**
@@ -48,6 +48,11 @@ These exist independently of the transaction and are not curated by the seller.
 - Source: Google Maps Static API (satellite map type)
 - Format: JPEG files saved as `satellite/{property_id}_sat.jpg`
 - Coverage: 100% of properties
+
+---
+
+### Controls (not CLIP-encoded, used directly in regression)
+These are not passed through CLIP. They enter the model directly as hedonic controls.
 
 **5. Tabular Attributes**
 - What: Structured property attributes including beds, baths, square footage, home type, sale price, listing price, days on market
@@ -129,7 +134,7 @@ mmai_midterm_report/
 
 Run the scripts in this exact order to reproduce the dataset from scratch.
 
-### Step 1 — Collect listings (`data_collection.py`)
+### Step 1: Collect listings (`data_collection.py`)
 
 Scrapes Zillow for sold properties, downloads Street View and satellite images, and fetches Census demographics. Edit the `keyword` and `max_pages` in the `__main__` block to specify the city and how many pages to collect.
 
@@ -152,7 +157,7 @@ Repeat for each city. All results append to `boston_listings_with_census.csv` an
 **Cities collected for this dataset:**
 Boston (including all neighborhoods), Cambridge, Somerville, Brookline, Newton, Arlington, Medford, Quincy, Braintree, Malden, Lowell, Lynn, Framingham, Waltham, Brockton
 
-### Step 2 — Fill gaps (`data_maintenance.py`)
+### Step 2: Fill gaps (`data_maintenance.py`)
 
 Downloads any missing Street View or satellite images, downloads listing photos from Zillow CDN, fills missing Census data, and fetches listing descriptions via Hasdata property detail API.
 
@@ -170,7 +175,7 @@ if __name__ == '__main__':
     fetch_property_details()    # Step 4: fetch listing descriptions
 ```
 
-### Step 3 — Clean the dataset (`data_cleaning.py`)
+### Step 3: Clean the dataset (`data_cleaning.py`)
 
 Reads `boston_listings_with_census.csv`, parses photo URL lists, coerces numeric columns, computes the price gap variable, remaps image file paths by checking disk, and outputs `boston_cleaned.csv`.
 
@@ -178,9 +183,9 @@ Reads `boston_listings_with_census.csv`, parses photo URL lists, coerces numeric
 python data_cleaning.py
 ```
 
-### Step 4 — Generate CLIP embeddings (`clip_script.py`)
+### Step 4: Generate CLIP embeddings (`clip_script.py`)
 
-Encodes all four CLIP-encodable modalities (listing text, listing photos, Street View, satellite) using CLIP ViT-B/32. Saves results to `clip_embeddings.npz`. The script is resumable (if interrupted, re-running picks up from the last checkpoint)
+Encodes all four CLIP-encodable modalities (listing text, listing photos, Street View, satellite) using CLIP ViT-B/32. Saves results to `clip_embeddings.npz`. The script is resumable — if interrupted, re-running picks up from the last checkpoint.
 
 ```bash
 python clip_script.py
@@ -201,12 +206,13 @@ Satellite: 23,624/23,624 (100.0%)
 All scripts are designed to be safely interrupted and restarted:
 - `data_collection.py` deduplicates by property ID on every save
 - `data_maintenance.py` checks for existing files before downloading and saves after each property
-- `clip_script.py` checkpoints atomically every 100 properties using a write-to-temp-then-rename strategy
+- `clip_script.py` checkpoints atomically every 100 properties using a write-to-temp-then-rename strategy — a crash never corrupts the checkpoint file
 
 ---
 
 ## Notes on Data Quality
 
+- Properties with a price below $50,000 were removed as likely rental listings or data errors
 - Properties outside the Greater Boston metropolitan area were dropped
 - Boston neighborhood names (Allston, Brighton, Roxbury, etc.) were normalized to `Boston`
 - Newton sub-neighborhoods (Newtonville, Auburndale, etc.) were normalized to `Newton`
