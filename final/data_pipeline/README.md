@@ -212,7 +212,6 @@ All scripts are designed to be safely interrupted and restarted:
 
 ## Notes on Data Quality
 
-- Properties with a price below $50,000 were removed as likely rental listings or data errors
 - Properties outside the Greater Boston metropolitan area were dropped
 - Boston neighborhood names (Allston, Brighton, Roxbury, etc.) were normalized to `Boston`
 - Newton sub-neighborhoods (Newtonville, Auburndale, etc.) were normalized to `Newton`
