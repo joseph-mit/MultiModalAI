@@ -20,6 +20,10 @@ This research project uses multimodal learning to analyze real estate listings b
   - `Multimodal_AI_Project_Midterm.html` - Midterm project report
   - `MIDTERM_README.md`
 - `final/` - files containing final report
+  - `Multimodal_AI_Project_Final.pdf` - final paper
+  - `experiments.py` - runs all analyses in the paper, writes results as .npz files
+  - `figures.py` - generates the 30 paper figures from the .npz files
+  - `README.md` - reproduction guide for the experiments
   - `data_pipeline/` - Python scripts for data collection, cleaning, and embedding generation
     - `data_collection.py` - Scrapes Zillow listings, fetches GSV, satellite images, and census data for 15 Greater Boston cities
     - `data_cleaning.py` - Remaps image paths, computes price gap, outputs boston_cleaned.csv
